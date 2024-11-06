@@ -1,10 +1,17 @@
 function binarySearch(list, element) {
-    if (list.length != 0){
-        var low = 0;
-        var high = list.length - 1;
+
+    if (list.length == 0){
+        return -1;
+    } 
+    else {
+        let low = 0;
+        let high = list.length - 1;
         while (low <= high) {
-            var mid = Math.floor((low + high) / 2);
+            let mid = Math.floor((low + high) / 2);
             if (list[mid] === element) {
+                if(((mid > 0 && list[mid - 1] === element) || (mid < list.length - 1 && list[mid + 1] === element))){
+                    return -1;
+                }
                 return mid;
             }
             else if (list[mid] < element) {
@@ -14,9 +21,6 @@ function binarySearch(list, element) {
                 high = mid - 1;
             }
         }
-        return -1;
-    }
-    else {
         return -1;
     }
 }
