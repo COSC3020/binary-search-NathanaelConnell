@@ -1,26 +1,18 @@
-function binarySearch(list, element) {
+function binarySearch(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
 
-    if (list.length == 0){
-        return -1;
-    } 
-    else {
-        let low = 0;
-        let high = list.length - 1;
-        while (low <= high) {
-            let mid = Math.floor((low + high) / 2);
-            if (list[mid] === element) {
-                if(((mid > 0 && list[mid - 1] === element) || (mid < list.length - 1 && list[mid + 1] === element))){
-                    return -1;
-                }
-                return mid;
-            }
-            else if (list[mid] < element) {
-                low = mid + 1;
-            }
-            else {
-                high = mid - 1;
-            }
+    while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+            return mid; 
+        } else if (arr[mid] < target) {
+            left = mid + 1; 
+        } else {
+            right = mid - 1;
         }
-        return -1;
     }
+
+    return -1; 
 }
